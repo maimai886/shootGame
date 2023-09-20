@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3kq2i7x5sp6n"]
+
+[ext_resource type="Script" path="res://Game.cs" id="1_0ft7o"]
+[ext_resource type="Texture2D" uid="uid://cbl3rkl1o15ak" path="res://icon.svg" id="2_7i56k"]
+[ext_resource type="Script" path="res://Jack.cs" id="3_m5a4d"]
+[ext_resource type="PackedScene" uid="uid://duu5gdst7jvhj" path="res://bullet.tscn" id="4_sr5fw"]
+[ext_resource type="PackedScene" uid="uid://d1a08xj2wr12v" path="res://Enemy.tscn" id="5_p10yk"]
+
+[node name="Game" type="Node" node_paths=PackedStringArray("WorldRoot", "SpawnTimer")]
+script = ExtResource("1_0ft7o")
+EnemyPrefab = ExtResource("5_p10yk")
+WorldRoot = NodePath("World")
+SpawnTimer = NodePath("Timer")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Jack" type="Sprite2D" parent="World"]
+position = Vector2(770, 454)
+texture = ExtResource("2_7i56k")
+script = ExtResource("3_m5a4d")
+BulletPrefab = ExtResource("4_sr5fw")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://duu5gdst7jvhj"]
+
+[ext_resource type="Texture2D" uid="uid://cbl3rkl1o15ak" path="res://icon.svg" id="1_cy81f"]
+[ext_resource type="Script" path="res://bullet.cs" id="2_e807x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gx62w"]
+radius = 67.082
+
+[node name="Bullet" type="Sprite2D" node_paths=PackedStringArray("DelayTimer")]
+position = Vector2(331, 509)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_cy81f")
+script = ExtResource("2_e807x")
+DelayTimer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gx62w")
